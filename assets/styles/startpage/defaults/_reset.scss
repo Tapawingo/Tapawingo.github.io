@@ -1,0 +1,40 @@
+body {
+	background-color: $bg !important;
+	font-family: 'Roboto Mono', monospace;
+	color: $red;
+	transition: all 0.25s ease-out;
+}
+
+ul {
+	list-style-type: none;
+	text-align: left;
+	padding: 2px 15px;
+}
+
+form {
+	margin: 1em 0;
+	position: relative;
+}
+
+form input[type="search"] {
+	background-color: var(--search-bg);
+	border: none;
+	box-sizing: border-box;
+	font-weight: bold;
+	font: inherit;
+	margin-left: 12px;
+	width: 95%;
+	color: $yellow;
+	transition: all 0.2s;
+    outline: none;
+}	
+
+form label {
+	color: $yellow;
+	position: absolute;
+	transition: all 0.4s;
+}
+
+form:focus-within input::placeholder {
+	opacity: 0;
+}

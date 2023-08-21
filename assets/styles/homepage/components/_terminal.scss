@@ -1,0 +1,134 @@
+div.terminal {
+    box-sizing: border-box;
+    box-shadow: 0px 0px 12px -3px rgba(0,0,0,0.75) inset;
+    border: 2px solid $bg4;
+    padding: 2%;
+    color: $fg1;
+    font-family: $default-font;
+    font-size: $font-normal;
+    background-color: $bg1;
+    height: 100%;
+
+    div {
+        margin-bottom: 4px;
+        opacity: 0;
+
+        transition: opacity ease 0.2s;
+
+        &.show{
+            opacity: 1;
+        }
+    };
+
+    div.command {
+        div { opacity: 1; };
+        span.term {
+            color: $green;
+            .username {
+                color: $orange;
+            }
+            .name-seperator {
+                color: $yellow;
+            }
+            .hostname {
+                color: $red;
+            }
+            .seperator {
+                color: $fg1;
+            }
+            .directory {
+                color: $blue
+            }
+        }
+
+        input {
+            background-color: transparent;
+            outline: none;
+            border: none;
+            color: $fg1;
+            font-family: $default-font;
+            font-size: $font-normal;
+            caret-shape: block;
+        }
+    };
+
+    div.userinfo {
+        div { opacity: 1; };
+        display: flex;
+        justify-content: start;
+        gap: 30px;
+        margin-top: 26px;
+        margin-bottom: 30px;
+
+        div.img {
+            background-image: url(/portrait.png);
+            background-repeat: no-repeat;
+            background-size: auto 100%;
+            flex: 0 0 17vw;
+        }
+
+        div {
+            max-width: 83vw;
+            div.seperator {
+                color: $grey1;
+            }
+
+            table {
+                border-spacing: 0.9rem 0.5rem;
+
+                td {
+                    vertical-align: top;
+                }
+
+                td:nth-child(1) {  
+                    text-align: end;
+                }
+
+                td:nth-child(2) {  
+                    color: $grey1;
+                }
+            }
+        }
+    }
+
+    div.commandinfo {
+        div { opacity: 1; };
+        margin-bottom: 30px;
+        div {
+            margin-left: 0.9rem;
+            span.cmd {
+                color:  $blue;
+            }
+
+            span.arg {
+                color:  $purple;
+            }
+
+            span.description {
+                color:  $grey1;
+            }
+        }
+    }
+
+    div.dirinfo {
+        div { opacity: 1; };
+        margin-bottom: 30px;
+        table {
+            margin-left: 0px;
+            padding: 0px;
+            border-spacing: 0.9rem 0.3rem;
+
+            td {
+                vertical-align: top;
+            }
+
+            td:nth-child(4) {  
+                text-align: end;
+            }
+
+            td:nth-child(6) {  
+                color: $blue;
+            }
+        }
+    }
+}
