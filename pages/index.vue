@@ -13,8 +13,8 @@
             <div class="img"></div>
             <div>
                 <div>tapawingo@homepage</div>
-                <div class="seperator">----------------</div>
-                <div>I'm a self-thaught Software and Web Developer from Norway.</div><br/>
+                <div class="seperator">------------------</div>
+                <div>I'm a self-taught Software and Web Developer from Norway.</div>
                 <table>
                     <tr> <td>Occupation:</td> <td>Currently studying for a bachelor in computer programming.</td> </tr>
                     <tr> <td>Motivation:</td> <td>I have a very strong passion for everything computers and love learning new technologies.</td> </tr>
