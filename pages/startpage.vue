@@ -6,19 +6,13 @@
             <h1 class="title">Tapawingo</h1>
             <div ref="date"></div>
 
-            <!-- Web search -->
             <div id="web_search">
                 <form action="https://duckduckgo.com/" method="GET" autocomplete="off">
                     <label for="q">></label>
-                    <input autofocus
-                            id="q"
-                            name="q"
-                            type="search"
-                            placeholder="search with duckduckgo...">
+                    <input autofocus id="q" name="q" type="search" placeholder="search with duckduckgo...">
                 </form>
             </div>
 
-            <!-- Links -->
             <nav>
                 <div id=links_container>
                     <ul>
@@ -43,12 +37,12 @@
                     <ul>
                         <a class="subtitle">Devshits</a>
                             <li><a href="https://github.com/">GitHub</a></li>
-                            <li><a href="https://ewa.epfl.ch/">Mail</a></li>
-                            <li><a href="https://moodle.epfl.ch/">Moodle</a></li>
+                            <li><a href="https://stackoverflow.com/">Stack Overflow</a></li>
+                            <li><a href="https://ocw.mit.edu/search/?d=Electrical%20Engineering%20and%20Computer%20Science&s=department_course_numbers.sort_coursenum">OpenCourseware</a></li>
                     </ul>
                     <ul>
                         <a class="subtitle">Others</a>
-                            <li><a href="https://www.digikey.com/">Digikey</a></li>
+                            <li><a href="https://catbox.moe/">Catbox</a></li>
                             <li><a href="http://localhost:3000">localhost</a></li>
                             <li><a href="https://www.dev.to/">DEV</a></li>
                     </ul>

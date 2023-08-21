@@ -9,10 +9,18 @@ div.terminal {
     background-color: $bg1;
     height: 100%;
 
+    a {
+        text-decoration: underline;
+        color: inherit;
+
+        &:hover {
+            color: $fg1;
+        };
+    };
+
     div {
         margin-bottom: 4px;
         opacity: 0;
-
         transition: opacity ease 0.2s;
 
         &.show{
@@ -21,21 +29,29 @@ div.terminal {
     };
 
     div.command {
-        div { opacity: 1; };
+        div { 
+            opacity: 1; 
+        };
+
         span.term {
             color: $green;
+
             .username {
                 color: $orange;
             }
+
             .name-seperator {
                 color: $yellow;
             }
+
             .hostname {
                 color: $red;
             }
+
             .seperator {
                 color: $fg1;
             }
+            
             .directory {
                 color: $blue
             }
@@ -53,12 +69,15 @@ div.terminal {
     };
 
     div.userinfo {
-        div { opacity: 1; };
         display: flex;
-        justify-content: start;
+        justify-content: flex-start;
         gap: 30px;
         margin-top: 26px;
         margin-bottom: 30px;
+
+        div { 
+            opacity: 1; 
+        };
 
         div.img {
             background-image: url(/portrait.png);
@@ -69,6 +88,7 @@ div.terminal {
 
         div {
             max-width: 83vw;
+
             div.seperator {
                 color: $grey1;
             }
@@ -92,10 +112,15 @@ div.terminal {
     }
 
     div.commandinfo {
-        div { opacity: 1; };
         margin-bottom: 30px;
+
+        div { 
+            opacity: 1; 
+        };
+
         div {
             margin-left: 0.9rem;
+
             span.cmd {
                 color:  $blue;
             }
@@ -111,8 +136,12 @@ div.terminal {
     }
 
     div.dirinfo {
-        div { opacity: 1; };
         margin-bottom: 30px;
+
+        div { 
+            opacity: 1; 
+        };
+
         table {
             margin-left: 0px;
             padding: 0px;

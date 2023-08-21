@@ -19,9 +19,9 @@
                     <tr> <td>Occupation:</td> <td>Currently studying for a bachelor in computer programming.</td> </tr>
                     <tr> <td>Motivation:</td> <td>I have a very strong passion for everything computers and love learning new technologies.</td> </tr>
                     <tr> <td>Facts:</td> <td>I'm into esoteric languages.</td> </tr>
-                    <tr> <td>LinkedIn:</td> <td>eir-tep@hotmail.no</td> </tr>
-                    <tr> <td>Contact:</td> <td>https://www.linkedin.com/in/eirik-dalsegg-teppen-608019206/</td> </tr>
-                    <tr> <td>Tools:</td> <td>Git, Arduino, Raspberry-Pi, Linux, Windows, Unreal Engine</td> </tr>
+                    <tr> <td>Email:</td> <td>eir-tep@hotmail.no</td> </tr>
+                    <tr> <td>Contact:</td> <td><a href="https://www.linkedin.com/in/eirik-dalsegg-teppen-608019206/">linkedin</a>, <a href="https://discord.com/users/155684062407688192">Discord</a></td> </tr>
+                    <tr> <td>Tools:</td> <td>Git, Arduino, Raspberry-Pi, Linux, Windows, Unreal Engine, Gimp</td> </tr>
                     <tr> <td>Technologies:</td> <td>OpenGL, DearImGui, Vue.js, Nuxt.js, Node.js, Discord.js, Express.js, MySQL, SQLite, Tailwind</td> </tr>
                     <tr> <td>Languages:</td> <td>C, C++, x86 Assembly, Python, JavaScript, TypeScript, HTML, CSS, PHP, LUA</td> </tr>
                 </table>
@@ -37,7 +37,7 @@
             </span> <span ref="commandInput2">cheat homepage</span>
         </div>
         <div class="commandinfo" :class="{ show: progress > 2 }">
-            <div><span class="cmd">cd</span> <span class="arg">DIR</span> - <span class="description">Changes to given directory</span></div>
+            <div v-for="command in commands"><span class="cmd">{{ command.name }}</span><span v-for="arg in command.args" class="arg"> {{ ' ' + arg }}</span> - <span class="description">{{ command.description }}</span></div>
         </div>
         <div class="command" :class="{ show: progress > 2 }">
             <span class="term">[
@@ -51,9 +51,7 @@
         <div class="dirinfo" :class="{ show: progress > 3 }">
             total 42980
             <table>
-                <tr> <td>-r--r--r-- 1</td> <td>tapawingo</td> <td>tapawingo</td> <td>1530</td> <td>Aug 20 2023</td> <td>homepage</td> </tr>
-                <tr> <td>-r--r--r-- 1</td> <td>tapawingo</td> <td>tapawingo</td> <td>153</td> <td>Aug 21 2023</td> <td>startpage</td> </tr>
-                <tr> <td>-r--r--r-- 1</td> <td>tapawingo</td> <td>tapawingo</td> <td>1530</td> <td>Feb 04 2020</td> <td>github</td> </tr>
+                <tr v-for="page in cdPages"> <td>{{ page.perms[0] }}</td> <td>{{ page.perms[1] }}</td> <td>{{ page.perms[2] }}</td> <td>{{ page.size }}</td> <td>{{ page.date }}</td> <td>{{ page.name }}</td> </tr>
             </table>
         </div>
         <div class="command" :class="{ show: progress > 3 }">
@@ -95,22 +93,22 @@
     const commandInput2: Ref<null | HTMLElement> = ref(null);
     const commandInput3: Ref<null | HTMLElement> = ref(null);
     const userInput: Ref<null | HTMLElement> = ref(null);
+    
+    const cdPages: Ref<Array<any>> = ref([
+        { name: 'homepage', url: '/', perms: ['-r--r--r-- 1', 'tapawingo', 'tapawingo'], size: '1530', date: 'Aug 20 2023' },
+        { name: 'startpage', url: '/startpage', perms: ['-r--r--r-- 1', 'tapawingo', 'tapawingo'], size: '153', date: 'Aug 21 2023'  },
+        { name: 'github', url: 'https://github.com/Tapawingo', perms: ['-r--r--r-- 1', 'tapawingo', 'tapawingo'], size: '6234', date: 'Feb 04 2020'  },
+        { name: 'linkedin', url: 'https://www.linkedin.com/in/eirik-dalsegg-teppen-608019206/', perms: ['-r--r--r-- 1', 'tapawingo', 'tapawingo'], size: '6234', date: 'Feb 04 2020'  },
+        { name: 'discord', url: 'https://discord.com/users/155684062407688192', perms: ['-r--r--r-- 1', 'tapawingo', 'tapawingo'], size: '1541', date: 'Mar 05 2016'  },
+    ]);
 
     const commands: Ref<Array<any>> = ref([
-        { command: 'cd', args: ['DIR'], execute: (args: Array<string>) => {
-            switch (args.join(' ')) {
-                case 'homepage':
-                    navigateTo('/');
-                    return 'Redirecting to homepage';
-                case 'startpage':
-                    navigateTo('/startpage');
-                    return 'Redirecting to startpage';
-                case 'github':
-                    navigateTo('https://github.com/Tapawingo', { external: true });
-                    return 'Redirecting to github';
-                default:
-                return 'Unknown page';
-            }
+        { name: 'cd', args: ['DIR'], description: 'Changes to given directory', execute: (args: Array<string>) => {
+            var arg: string = args.join(' ');
+            var page = cdPages.value.find((page: any) => {
+                return page.name === arg;
+            });
+            navigateTo(page.url, { external: true });
         } }
     ]);
 
@@ -120,7 +118,8 @@
         'cd',
         'homepage',
         'startpage',
-        'github'
+        'github',
+        'linkedin'
     ]);
 
     const updateSelection = (event: Event) => {
@@ -152,10 +151,10 @@
         var inputCmd: string | undefined = args.shift();
         
         var command: any = commands.value.find((cmd: any) => {
-            return cmd.command === inputCmd;
+            return cmd.name === inputCmd;
         });
 
-        var ret: string = command.execute(args);
+        command.execute(args);
     }
 
     const typewrite = (el: HTMLElement | Element, speedmin: number = 38, speedmax: number = 42) => {
