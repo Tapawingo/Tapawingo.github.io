@@ -21,6 +21,7 @@
                         <li><a href="https://ntnu.blackboard.com/ultra//">Blackboard</a></li>
                         <li><a href="https://www.microsoft365.com/apps?auth=2">Office 365</a></li>
                         <li><a href="https://outlook.office.com/mail/">Mail</a></li>
+                        <li><a href="https://drive.google.com/drive/folders/1UZXVBcLjBzZ9mgY7Z2i4k6EdZC7dX_W_">Books</a></li>
                     </ul>
                     <ul>
                         <a class="subtitle">Media</a>
