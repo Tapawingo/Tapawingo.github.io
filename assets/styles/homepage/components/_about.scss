@@ -1,0 +1,113 @@
+.about-content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    div.profile, div.skills {
+        display: flex;
+        align-items: center;
+        transition: all 1.1s;
+        opacity: 0;
+
+        &.transition-slide-in {
+            transform: translateX(0px) !important;
+        }
+    }
+}
+
+.profile {
+    flex-direction: column;
+    transform: translate(-300px);
+
+    .profile-picture {
+        height: 20rem;
+        width: 20rem;
+        margin-bottom: 1rem;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        background-image: url(/portrait.png);
+        background-size: contain;
+        border-radius: 50%;
+        box-shadow: 1px 0px 22px 3px rgba(0,0,0,0.75) inset;
+        opacity: 0.9;
+    }
+
+    .profile-text {
+        box-sizing: border-box;
+        font-size: 1.2rem;
+        width: 500px;
+        line-height: 1.8;
+    }
+}
+
+
+@media only screen and (max-width: 600px) {
+    .about-content {
+        flex-wrap: wrap;
+    }
+
+    .profile-picture {
+        margin-bottom: 0rem !important;
+    }
+
+    .profile-text {
+        width: 100vw !important;
+        margin-top: 0rem;
+        padding: 2.5rem;
+    }
+}
+
+.skills {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    transform: translateX(300px);
+
+    div {
+        width: 300px;
+        height: 300px;
+        border: solid 0.1rem $border;
+        padding: 1rem;
+
+        h3 {
+            font-size: 1.75rem;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            z-index: 9999;
+        }
+
+        ul {
+            column-count: 2;
+            list-style-type: none;
+            margin: 0;
+
+            li {
+                transition: all 0.25s;
+            }
+        }
+    }
+}
+
+.skills-languages {
+    h3 { border-bottom: solid 0.2rem $accent1; }
+
+    li:hover { background-color: $accent1; }
+}
+
+.skills-tools {
+    h3 { border-bottom: solid 0.2rem $accent2; }
+
+    li:hover { background-color: $accent2; }
+}
+
+.skills-frameworks {
+    h3 { border-bottom: solid 0.2rem $accent3; }
+
+    li:hover { background-color: $accent3; }
+}
+
+.iconify {
+    height: 1.75rem;
+}

@@ -1,197 +1,163 @@
 <template>
-    <div class="terminal">
-        <div class="command" :class="{ show: progress > 0 }">
-            <span class="term">[
-                <span class="username">anonymous</span>
-                <span class="name-seperator">@</span>
-                <span class="hostname">homepage</span>
-                <span class="seperator">:</span>
-                <span class="directory">~</span> ]$
-            </span><span ref="commandInput1" class="commandtext">lslogins -u tapawingo</span>
-        </div>
-        <div class="userinfo" :class="{ show: progress > 1 }">
-            <div class="img"></div>
-            <div>
-                <div>tapawingo@homepage</div>
-                <div class="seperator">------------------</div>
-                <div>I'm a self-taught Software and Web Developer from Norway.</div>
-                <table>
-                    <tr> <td>Occupation:</td> <td>Currently studying for a bachelor in computer programming.</td> </tr>
-                    <tr> <td>Motivation:</td> <td>I have a very strong passion for everything computers and love learning new technologies.</td> </tr>
-                    <tr> <td>Facts:</td> <td>I'm into esoteric languages.</td> </tr>
-                    <tr> <td>Email:</td> <td>eir-tep@hotmail.no</td> </tr>
-                    <tr> <td>Contact:</td> <td><a href="https://www.linkedin.com/in/eirik-dalsegg-teppen-608019206/">linkedin</a>, <a href="https://discord.com/users/155684062407688192">Discord</a></td> </tr>
-                    <tr> <td>Tools:</td> <td>Git, Arduino, Raspberry-Pi, Linux, Windows, Unreal Engine, Gimp</td> </tr>
-                    <tr> <td>Technologies:</td> <td>OpenGL, DearImGui, Vue.js, Nuxt.js, Node.js, Discord.js, Express.js, MySQL, SQLite, Tailwind</td> </tr>
-                    <tr> <td>Languages:</td> <td>C, C++, x86 Assembly, Python, JavaScript, TypeScript, HTML, CSS, PHP, LUA</td> </tr>
-                </table>
+    <ParticleBackground v-bind="backgroundOptions" />
+    <main id="homepage" ref="mainElement" @scroll="updateScrollTop">
+        <section class="header" v-fade-in="{ topOffset: 0, bottomOffset: 0 }">
+            <div class="heading">
+                <span class="linebreak">Hey, I’m <span>Eirik</span>.</span>
+                <span class="linebreak">I'm a full stack developer.</span>
             </div>
-        </div>
-        <div class="command" :class="{ show: progress > 1 }">
-            <span class="term">[
-                <span class="username">anonymous</span>
-                <span class="name-seperator">@</span>
-                <span class="hostname">homepage</span>
-                <span class="seperator">:</span>
-                <span class="directory">~</span> ]$
-            </span> <span ref="commandInput2">cheat homepage</span>
-        </div>
-        <div class="commandinfo" :class="{ show: progress > 2 }">
-            <div v-for="command in commands"><span class="cmd">{{ command.name }}</span><span v-for="arg in command.args" class="arg"> {{ ' ' + arg }}</span> - <span class="description">{{ command.description }}</span></div>
-        </div>
-        <div class="command" :class="{ show: progress > 2 }">
-            <span class="term">[
-                <span class="username">anonymous</span>
-                <span class="name-seperator">@</span>
-                <span class="hostname">homepage</span>
-                <span class="seperator">:</span>
-                <span class="directory">~</span> ]$
-            </span> <span ref="commandInput3">ls -l</span>
-        </div>
-        <div class="dirinfo" :class="{ show: progress > 3 }">
-            total 42980
-            <table>
-                <tr v-for="page in cdPages"> <td>{{ page.perms[0] }}</td> <td>{{ page.perms[1] }}</td> <td>{{ page.perms[2] }}</td> <td>{{ page.size }}</td> <td>{{ page.date }}</td> <td>{{ page.name }}</td> </tr>
-            </table>
-        </div>
-        <div class="command" :class="{ show: progress > 3 }">
-            <span class="term">[
-                <span class="username">anonymous</span>
-                <span class="name-seperator">@</span>
-                <span class="hostname">homepage</span>
-                <span class="seperator">:</span>
-                <span class="directory">~</span> ]$
-            </span> 
-            <input type="text" ref="userInput" v-forced-focus @keyup.enter="submitSelection" @keyup.tab="autoComplete" @change="updateSelection" />
-        </div>
-    </div>
+            <Icon icon="bi:chevron-down" />
+        </section>
+        <section class="about" v-fade-in="{ topOffset: 300, bottomOffset: 0 }">
+            <h2>About</h2>
+            <div class="about-content">
+                <Profile v-bind="profile" v-slide-in="{ topOffset: 400, bottomOffset: -300 }" />
+                <Skills v-bind="skills" v-slide-in="{ topOffset: 400, bottomOffset: -400 }" />
+            </div>
+        </section>
+        <section class="projects" v-fade-in="{ topOffset: 300, bottomOffset: 0 }">
+            <h2>Projects</h2>
+            <div class="project-container" v-slide-in="{ topOffset: 300, bottomOffset: -300 }">
+                <Projects :projects="projects" />
+            </div>
+        </section>
+        <section class="contact" v-fade-in="{ topOffset: 300, bottomOffset: 0 }">
+            <h2>Contact</h2>
+            <form class="contact-form" @submit.prevent="">
+                <p>Have a question or want to work together? Leave your details and I'll get back to you as soon as possible.</p>
+                <input type="text" name="name" class="contact-form-name" placeholder="Name" />
+                <input type="mail" name="mail" class="contact-form-mail" placeholder="Email" />
+                <textarea cols="30" name="message" rows="10" class="contact-text" placeholder="Message">(Backend is WIP)</textarea>
+                <input type="submit" value="Submit" class="contact-submit">
+            </form>
+        </section>
+        <Footer />
+    </main>
 </template>
 
 <script setup lang="ts">
     import '~/assets/styles/homepage/main.scss';
-
-    const vForcedFocus = {
-        mounted: (el: HTMLElement) => {
-            el.focus();
-            el.onblur = (event: Event) => {
-                setTimeout(() => {
-                    el.focus();
-                }, 10);
-            };
-        }
-    };
-
-    const vFocus = {
-        mounted: (el: HTMLElement) => {
-            el.focus();
-            el.focus();
-        }
-    };
-
-    const progress: Ref<number> = ref(0);
-    const commandInput1: Ref<null | HTMLElement> = ref(null);
-    const commandInput2: Ref<null | HTMLElement> = ref(null);
-    const commandInput3: Ref<null | HTMLElement> = ref(null);
-    const userInput: Ref<null | HTMLElement> = ref(null);
+    import { Icon } from '@iconify/vue';
     
-    const cdPages: Ref<Array<any>> = ref([
-        { name: 'homepage', url: '/', perms: ['-r--r--r-- 1', 'tapawingo', 'tapawingo'], size: '1530', date: 'Aug 20 2023' },
-        { name: 'startpage', url: '/startpage', perms: ['-r--r--r-- 1', 'tapawingo', 'tapawingo'], size: '153', date: 'Aug 21 2023'  },
-        { name: 'github', url: 'https://github.com/Tapawingo', perms: ['-r--r--r-- 1', 'tapawingo', 'tapawingo'], size: '6234', date: 'Feb 04 2020'  },
-        { name: 'linkedin', url: 'https://www.linkedin.com/in/eirik-dalsegg-teppen-608019206/', perms: ['-r--r--r-- 1', 'tapawingo', 'tapawingo'], size: '6234', date: 'Feb 04 2020'  },
-        { name: 'discord', url: 'https://discord.com/users/155684062407688192', perms: ['-r--r--r-- 1', 'tapawingo', 'tapawingo'], size: '1541', date: 'Mar 05 2016'  },
-    ]);
+    const mainElement: Ref<null | HTMLCanvasElement> = ref(null);
+    const scrollTop: Ref<number> = ref(0);
 
-    const commands: Ref<Array<any>> = ref([
-        { name: 'cd', args: ['DIR'], description: 'Changes to given directory', execute: (args: Array<string>) => {
-            var arg: string = args.join(' ');
-            var page = cdPages.value.find((page: any) => {
-                return page.name === arg;
-            });
-            navigateTo(page.url, { external: true });
-        } }
-    ]);
-
-    /* Autocomplete */
-    const selection: Ref<string> = ref('');
-    const suggestions: Ref<Array<string>> = ref([
-        'cd',
-        'homepage',
-        'startpage',
-        'github',
-        'linkedin'
-    ]);
-
-    const updateSelection = (event: Event) => {
-        if (userInput.value) {
-            selection.value = (userInput.value as HTMLInputElement).value;
-        };
+    const backgroundOptions = {
+        options: {
+            debug: false,
+            connections: true,
+            mouseInput: useMouse({ target: mainElement })
+        }
     };
 
-    const autoComplete = (event: Event) => {
-        if (userInput.value) {
-            var inputArr: Array<string> = selection.value.split(' ');
-            var word: string | undefined = inputArr.pop();
-            if (!word) return;
-            
-            var suggestion: string | undefined = suggestions.value.find((suggestion: string) => {
-                return word === suggestion.slice(0, word!.length);
-            });
-            
-            if (suggestion) {
-                inputArr.push(suggestion);
-                (userInput.value as HTMLInputElement).value = inputArr.join(' ');
-                selection.value = inputArr.join(' ');
-            }
-        };
-    };
-
-    const submitSelection = (event: Event) => {
-        var args: Array<string> = selection.value.split(' ');
-        var inputCmd: string | undefined = args.shift();
-        
-        var command: any = commands.value.find((cmd: any) => {
-            return cmd.name === inputCmd;
-        });
-
-        command.execute(args);
+    const profile = {
+        description: 'I’m a full stack developer with a deep passion for anything\
+            computers. I’m experienced in both web and software development\
+            and love learning new technologies. When I’m not at my computer\
+            I go on hikes, collect militaria and play airsoft.'
     }
 
-    const typewrite = (el: HTMLElement | Element, speedmin: number = 38, speedmax: number = 42) => {
-        return new Promise((resolve) => {
-            var i = 0;
-            var text = el.innerHTML;
-            el.innerHTML = '';
-
-            const write = () => {
-                if (i < text.length) {
-                    el.innerHTML += text.charAt(i);
-                    i++;
-                    setTimeout(write, Math.random() * (speedmax - speedmin) + speedmin);
-                } else {
-                    resolve(true);
-                }
-            }
-            setTimeout(write, Math.random() * (speedmax - speedmin) + speedmin);
-        })
+    const skills = {
+        languages: ['C', 'C++', 'Python', 'Assembly', 'JavaScript', 'TypeScript', 'HTML5', 'CSS3', 'SASS', 'PHP', 'LUA'],
+        tools: ['Git', 'Arduino', 'Raspberry Pi', 'Linux', 'Windows', 'Unreal Engine', 'Gimp'],
+        technology: ['OpenGL', 'DirectX12', 'Vulkan', 'DearImGui', 'QT', 'Vue.js', 'Nuxt.js', 'Node.js', 'Node.js', 'Discord.js', 'Express.js', 'MySQL', 'MongoDB', 'SQLite', 'Tailwind']
     };
 
-    onMounted(async () => {
-        progress.value++;
-        await typewrite(commandInput1.value!);
-        progress.value++;
-        await typewrite(commandInput2.value!);
-        progress.value++;
-        await typewrite(commandInput3.value!);
-        progress.value++;
+    const projects = [
+        {
+            title: 'FreeTakServer',
+            description: 'FTS is a Python3 implementation of a TAK Server for devices like ATAK, WinTAK, and \
+                ITAK, it is cross-platform and runs from a multi node installation on AWS down to the Android edition.\
+                It\'s free and open source.',
+            link: 'https://freetakteam.github.io/FreeTAKServer-User-Docs/'
+        },
+        {
+            title: 'Cluster Mission Framework (CMF3)',
+            description: 'CMF3 is an effort by the Cluster Community Mod Team to enhance the \
+                individual experience of our playerbase. It is an Arma 3 Mission Framework aiming to simplify\
+                the mission development process for mission creators and to enhance the realism and immersion of \
+                the individual players.',
+            link: 'https://github.com/clustermod/CMF3'
+        },
+        {
+            title: 'Cluster Community Homepage',
+            description: 'The homepage for Cluster Community. Cluster Community is a online\
+                video-game community mainly focusing creating realistic, immersive\
+                experiences on Arma 3.',
+            link: 'https://cluster-community.com/'
+        }
+    ]
+
+    const updateScrollTop = (evt: UIEvent) => {
+        scrollTop.value = (evt.target as HTMLElement).scrollTop;
+    };
+
+    const elementVisible = (el:HTMLElement, topOffset: number = 0, bottomOffset: number = 0): boolean => {
+        const { top, bottom } = el.getBoundingClientRect();
+        const { innerHeight } = window;
+
+        // @BUG: If element is higher than viewport it gets hidden when top and bottom is outside
+        return (
+            ( top > 0 && (top + topOffset) < innerHeight ) ||
+            ( (bottom + bottomOffset) > 0 && bottom < innerHeight)
+        )
+    }
+
+    const vFadeIn = {
+        mounted: (el: HTMLElement, binding: any) => {
+            setInterval(() => {
+                if (elementVisible(el, binding.value.topOffset, binding.value.bottomOffset)) {
+                    el.classList.remove('transition-fade-out');
+                    el.classList.add('transition-fade-in');
+                } else {
+                    el.classList.remove('transition-fade-in');
+                    el.classList.add('transition-fade-out');
+                }
+            }, 5);
+        }
+    }
+
+    const vSlideIn = {
+        mounted: (el: HTMLElement, binding: any) => {
+            setInterval(() => {
+                if (elementVisible(el, binding.value.topOffset, binding.value.bottomOffset)) {
+                    el.classList.remove('transition-slide-out');
+                    el.classList.add('transition-slide-in');
+                } else {
+                    el.classList.remove('transition-slide-in');
+                    el.classList.add('transition-slide-out');
+                }
+            }, 5);
+        }
+    }
+
+    useHead({
+        htmlAttrs: {
+            lang: 'en'
+        },
+        link: [
+            { rel: 'apple-touch-icon', type: 'image/png', sizes: '180x180', href: '/apple-touch-icon.png' },
+            { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' },
+            { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' },
+            { rel: 'manifest', href: '/site.webmanifest' },
+            { rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: '#ea6962' },
+        ],
+        meta: [
+            { name: 'msapplication-TileColor', content: '#2b5797' },
+            { name: 'theme-color', content: '#ffffff' }
+        ]
     })
 
     useSeoMeta({
-        title: 'ls logins -u tapawingo',
-        ogTitle: 'ls logins -u tapawingo',
-        description: 'Homepage of Tapawingo.',
-        ogDescription: 'Homepage of Tapawingo.',
-        ogImage: '',
-        twitterCard: null,
+        ogUrl: 'eirik.dalseggteppen.no',
+        title: 'Eirik | Full Stack Developer',
+        ogTitle: 'Eirik | Full Stack Developer',
+        description: 'Homepage of Eirik "Tapawingo".',
+        ogDescription: 'Homepage of Eirik "Tapawingo".',
+        ogImage: '/og-image.png',
+        twitterCard: 'summary',
+        twitterTitle: 'Eirik | Full Stack Developer',
+        twitterDescription: 'Homepage of Eirik "Tapawingo".',
+        twitterImage: '/favicon.png',
     })
 </script>

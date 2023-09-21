@@ -1,5 +1,15 @@
-@import "defaults/variables";
-@import "defaults/animations";
-@import "defaults/reset";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Noto+Sans&display=swap');
 
-@import "components/terminal";
+@import "abstracts/variables";
+@import "abstracts/mixins";
+@import "abstracts/animations";
+
+@import "base/reset";
+
+@import "components/background";
+@import "components/header";
+@import "components/about";
+@import "components/projects";
+@import "components/contact";
+@import "components/footer";
+@import "components/icon";

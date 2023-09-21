@@ -1,0 +1,27 @@
+section.header {
+    height: 100vh;
+
+    .heading {
+        width: 100vw;
+        height: 95vh;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.75s;
+        @include dynamicFontSize(2);
+
+        span.linebreak {
+            span {
+                color: $accent1;
+            }
+        }
+    }
+
+    &.transition-fade-in {
+        .heading {
+            @include dynamicFontSize(3);
+        }
+    }
+}

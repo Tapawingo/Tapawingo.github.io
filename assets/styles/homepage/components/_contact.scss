@@ -1,0 +1,55 @@
+section.contact {
+    h2 {
+        margin-bottom: 2rem;
+    }
+
+    &.transition-fade-out {
+        transform: scale(0.5);
+    }
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    border: solid 0.1rem $border;
+    gap: 1rem;
+    padding: 3rem;
+    padding-top: 1rem;
+    width: 45%;
+    margin-bottom: 4rem;
+
+    input, textarea {
+        font-family: $default-font;
+        background-color: transparent;
+        outline: none;
+        border: none;
+        border-bottom: solid 0.1rem $accent1;
+        color: white;
+        padding: 0.5rem;
+    }
+
+    textarea {
+        border: solid 0.1rem $accent1;
+        resize: none;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .contact-form {
+        width: auto;
+        margin: 1rem;
+        padding: 1rem;
+    }
+}
+
+.contact-submit {
+    width: 200px;
+    align-self: flex-end;
+    border-bottom: solid 0.2rem $accent1 !important;
+    transition: all 0.25s;
+    cursor: pointer;
+
+    &:hover {
+        background-color: $accent1;
+    }
+}

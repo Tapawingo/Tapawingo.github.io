@@ -1,0 +1,59 @@
+body {
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    margin: 0px;
+    background-color: #1a1a1a;
+    height: 100vh;
+}
+
+main {
+    top: 0px;
+    display: flex;
+    flex-direction: column;
+    font-family: $default-font;
+    position: absolute;
+    z-index: 3;
+    color: white;
+    height: 100vh;
+    width: 100vw;
+    overflow-y: auto;
+    overflow-x: hidden;
+    cursor: none;
+}
+
+section {
+    font-family: $default-font;
+    width: 1300px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.75s;
+    opacity: 0;
+
+    h2 {
+        position: relative;
+        @include dynamicFontSize(3);
+        margin-top: 2rem;
+        margin-bottom: 9rem;
+        z-index: 9999;
+        border-bottom: solid 0.2rem $accent1;
+    }
+
+    &.transition-out {
+        transition: all 0.75s;
+        opacity: 0;
+
+        h2 {
+            @include dynamicFontSize(2);
+        }
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    section {
+        width: 100vw;
+    }
+}
