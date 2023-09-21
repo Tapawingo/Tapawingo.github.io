@@ -2,9 +2,8 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ['@vueuse/nuxt', 'nuxt-icon'],
-  generate:{
-    nojekyll: true
-  },
-  ssr: false,
-  target: "static",
+  app: {
+    baseURL: '/',
+    buildAssetsDir: 'assets'
+  }
 })
