@@ -2,4 +2,9 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ['@vueuse/nuxt', 'nuxt-icon'],
+  nitro: {
+    prerender: {
+        failOnError: false
+    }
+  }
 })
