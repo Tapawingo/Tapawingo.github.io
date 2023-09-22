@@ -1,7 +1,7 @@
 <template>
     <!-- Welcome screen -->
     <div id="main_window">
-        <img id=leftImg src="/widgetCover.jpg" class="image">
+        <img id=leftImg src="/img/widgetCover.jpg" class="image">
         <div id="content">
             <h1 class="title">Tapawingo</h1>
             <div ref="date"></div>

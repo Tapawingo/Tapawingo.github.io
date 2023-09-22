@@ -55,7 +55,7 @@
             computers. I’m experienced in both web and software development\
             and love learning new technologies. When I’m not at my computer\
             I go on hikes, collect militaria and play airsoft.'
-    }
+    };
 
     const skills = {
         languages: ['C', 'C++', 'Python', 'Assembly', 'JavaScript', 'TypeScript', 'HTML5', 'CSS3', 'SASS', 'PHP', 'LUA'],
@@ -86,7 +86,7 @@
                 experiences on Arma 3.',
             link: 'https://cluster-community.com/'
         }
-    ]
+    ];
 
     const updateScrollTop = (evt: UIEvent) => {
         scrollTop.value = (evt.target as HTMLElement).scrollTop;
@@ -101,7 +101,7 @@
             ( top > 0 && (top + topOffset) < innerHeight ) ||
             ( (bottom + bottomOffset) > 0 && bottom < innerHeight)
         )
-    }
+    };
 
     const vFadeIn = {
         mounted: (el: HTMLElement, binding: any) => {
@@ -115,7 +115,7 @@
                 }
             }, 5);
         }
-    }
+    };
 
     const vSlideIn = {
         mounted: (el: HTMLElement, binding: any) => {
@@ -129,24 +129,24 @@
                 }
             }, 5);
         }
-    }
+    };
 
     useHead({
         htmlAttrs: {
             lang: 'en'
         },
         link: [
-            { rel: 'apple-touch-icon', type: 'image/png', sizes: '180x180', href: '/apple-touch-icon.png' },
-            { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' },
-            { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' },
+            { rel: 'apple-touch-icon', type: 'image/png', sizes: '180x180', href: '/icon/apple-touch-icon.png' },
+            { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/icon/favicon-32x32.png' },
+            { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/icon/favicon-16x16.png' },
+            { rel: 'mask-icon', href: '/icon/safari-pinned-tab.svg', color: '#ea6962' },
             { rel: 'manifest', href: '/site.webmanifest' },
-            { rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: '#ea6962' },
         ],
         meta: [
             { name: 'msapplication-TileColor', content: '#2b5797' },
             { name: 'theme-color', content: '#ffffff' }
         ]
-    })
+    });
 
     useSeoMeta({
         ogUrl: 'eirik.dalseggteppen.no',
@@ -154,10 +154,10 @@
         ogTitle: 'Eirik | Full Stack Developer',
         description: 'Homepage of Eirik "Tapawingo".',
         ogDescription: 'Homepage of Eirik "Tapawingo".',
-        ogImage: '/og-image.png',
+        ogImage: '/icon/og-image.png',
         twitterCard: 'summary',
         twitterTitle: 'Eirik | Full Stack Developer',
         twitterDescription: 'Homepage of Eirik "Tapawingo".',
-        twitterImage: '/favicon.png',
-    })
+        twitterImage: '/icon/favicon.png',
+    });
 </script>
