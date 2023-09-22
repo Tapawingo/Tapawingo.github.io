@@ -1,14 +1,14 @@
 <template>
     <ParticleBackground v-bind="backgroundOptions" />
     <main ref="mainElement" @scroll="updateScrollTop">
-        <section class="header" v-fade-in="{ topOffset: 0, bottomOffset: 0 }">
+        <section class="header" v-fade-in="{ topOffset: 0, bottomOffset: -800 }">
             <div class="heading">
                 <span class="linebreak">Hey, I’m <span>Eirik</span>.</span>
                 <span class="linebreak">I'm a full stack developer.</span>
             </div>
             <Icon icon="bi:chevron-down" />
         </section>
-        <section class="about" v-fade-in="{ topOffset: 300, bottomOffset: 0 }">
+        <section class="about" v-fade-in="{ topOffset: 300, bottomOffset: -0 }">
             <h2>About</h2>
             <div class="about-content">
                 <Profile v-bind="profile" v-slide-in="{ topOffset: 400, bottomOffset: -300 }" />

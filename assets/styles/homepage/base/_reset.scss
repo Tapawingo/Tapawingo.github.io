@@ -35,19 +35,17 @@ section {
 
     h2 {
         position: relative;
-        @include dynamicFontSize(3);
+        @include dynamicFontSize(2);
         margin-top: 2rem;
         margin-bottom: 9rem;
         z-index: 9999;
         border-bottom: solid 0.2rem $accent1;
+        transition: all 0.5s;
     }
 
-    &.transition-out {
-        transition: all 0.75s;
-        opacity: 0;
-
+    &.transition-fade-in {
         h2 {
-            @include dynamicFontSize(2);
+            @include dynamicFontSize(3);
         }
     }
 }
