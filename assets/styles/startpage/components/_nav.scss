@@ -1,0 +1,42 @@
+.nav-container {
+	display: flex;
+	flex-wrap: wrap;
+
+    li, a {
+        color: $white;
+        text-decoration: none;
+        transition: all 0.4s;
+    }
+
+    li {
+        font-size: 13px;
+    }
+
+    a:hover {
+        color: $blue;
+        transition: all 0.4s;
+    }
+}
+
+.subtitle {
+	font-weight: bold;
+	color: $blue;
+}
+
+@media (max-width: 980px) {
+    .nav-container {
+        margin-top: 35px;
+
+        ul {
+            padding-top: 0px;
+            margin-top: -7px;
+        }
+    }
+
+}
+
+@media (max-width: 833px) {
+    .nav-container {
+        margin-top: 35px;
+    }
+}

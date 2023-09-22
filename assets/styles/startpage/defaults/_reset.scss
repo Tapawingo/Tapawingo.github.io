@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
+
 body {
 	background-color: $bg !important;
 	font-family: 'Roboto Mono', monospace;
@@ -37,4 +39,10 @@ form label {
 
 form:focus-within input::placeholder {
 	opacity: 0;
+}
+
+@media (max-width: 450px) {
+	form input[type="search"] {
+		width: 90%;
+	}
 }
