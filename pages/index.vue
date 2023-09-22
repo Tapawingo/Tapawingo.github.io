@@ -1,6 +1,6 @@
 <template>
     <ParticleBackground v-bind="backgroundOptions" />
-    <main id="homepage" ref="mainElement" @scroll="updateScrollTop">
+    <main ref="mainElement" @scroll="updateScrollTop">
         <section class="header" v-fade-in="{ topOffset: 0, bottomOffset: 0 }">
             <div class="heading">
                 <span class="linebreak">Hey, I’m <span>Eirik</span>.</span>
@@ -28,7 +28,7 @@
                 <input type="text" name="name" class="contact-form-name" placeholder="Name" />
                 <input type="mail" name="mail" class="contact-form-mail" placeholder="Email" />
                 <textarea cols="30" name="message" rows="10" class="contact-text" placeholder="Message">(Backend is WIP)</textarea>
-                <input type="submit" value="Submit" class="contact-submit">
+                <input type="submit" value="Submit" class="contact-submit" />
             </form>
         </section>
         <Footer />
