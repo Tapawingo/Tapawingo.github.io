@@ -56,7 +56,8 @@
                 links: [
                     { href:'https://github.com/', mask: 'GitHub' },
                     { href:'https://stackoverflow.com/', mask: 'Stack Overflow' },
-                    { href:'https://ocw.mit.edu/search/?d=Electrical%20Engineering%20and%20Computer%20Science&s=department_course_numbers.sort_coursenum', mask: 'OpenCourseWare' }
+                    { href:'https://ocw.mit.edu/search/?d=Electrical%20Engineering%20and%20Computer%20Science&s=department_course_numbers.sort_coursenum', mask: 'OpenCourseWare' },
+                    { href:'https://app.diagrams.net/', mask: 'draw.io' }
                 ]
             },
             {
