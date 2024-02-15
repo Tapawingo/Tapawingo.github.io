@@ -41,7 +41,7 @@
                 links: [
                     { href:'https://www.netflix.com/browse', mask: 'Netflix' },
                     { href:'https://www.youtube.com/', mask: 'YouTube' },
-                    { href:'https://www.anix.to/', mask: 'ANIX' }
+                    { href:'https://aniwave.to', mask: 'AniWave' }
                 ]
             },
             {
