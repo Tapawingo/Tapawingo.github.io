@@ -29,11 +29,11 @@
                 title: 'Uni',
                 links: [
                     { href:'https://innsida.ntnu.no/start#/feed/', mask: 'Innsida NTNU' },
+                    { href: "https://fsweb.no/studentweb/index.jsf", mask: "Studentweb" },
                     { href:'https://ntnu.blackboard.com/ultra/', mask: 'Blackboard' },
+                    { href: 'https://capquiz.math.ntnu.no/', mask: 'CapQuiz' },
                     { href:'https://www.microsoft365.com/apps?auth=2', mask: 'Office 365' },
-                    { href:'https://outlook.office.com/mail/', mask: 'Mail' },
-                    { href:'https://drive.google.com/drive/folders/1UZXVBcLjBzZ9mgY7Z2i4k6EdZC7dX_W_', mask: 'Books' },
-                    { href: "https://fsweb.no/studentweb/index.jsf", mask: "Studentweb" }
+                    { href:'https://outlook.office.com/mail/', mask: 'Mail' }
                 ]
             },
             {
