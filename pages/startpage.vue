@@ -32,6 +32,7 @@
                     { href: 'https://fsweb.no/studentweb/login.jsf?inst=FSNTNU', mask: 'Studentweb' },
                     { href: 'https://ntnu.blackboard.com/ultra/', mask: 'Blackboard' },
                     { href: 'https://capquiz.math.ntnu.no/', mask: 'CapQuiz' },
+                    { href: 'https://gitlab.stud.idi.ntnu.no/', mask: 'GitLab (NTNU)' },
                     { href: 'https://www.microsoft365.com/apps?auth=2', mask: 'Office 365' },
                     { href: 'https://outlook.office.com/mail/', mask: 'Mail' }
                 ]
